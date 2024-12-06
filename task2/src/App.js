@@ -1,9 +1,10 @@
 import './App.css';
+import DateRangePicker from './components/DateRangePicker';
 
 function App() {
   return (
     <div className="App">
-      <p>Hello World</p>
+      <DateRangePicker />
     </div>
   );
 }
