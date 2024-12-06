@@ -5,24 +5,28 @@ import {
   startOfMonth,
   endOfMonth,
   startOfWeek,
+  addMonths,
+  subMonths,
   endOfWeek,
 } from "date-fns";
 import "./DateRangePicker.css";
 
 const DateRangePicker = () => {
-  const [currentMonth] = useState(new Date());
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const renderHeader = () => {
     const dateFormat = "yyyy年 MM月";
     return (
       <div className="header row">
         <div className="col">
-          <div className="icon">&lsaquo;</div>
+          <div className="icon" onClick={prevMonth}>
+            &lsaquo;
+          </div>
         </div>
         <div className="col col-center">
           <span>{format(currentMonth, dateFormat)}</span>
         </div>
-        <div className="col">
+        <div className="col" onClick={nextMonth}>
           <div className="icon">&rsaquo;</div>
         </div>
       </div>
@@ -61,6 +65,14 @@ const DateRangePicker = () => {
       days = [];
     }
     return <div>{rows}</div>;
+  };
+
+  const nextMonth = () => {
+    setCurrentMonth(addMonths(currentMonth, 1));
+  };
+
+  const prevMonth = () => {
+    setCurrentMonth(subMonths(currentMonth, 1));
   };
 
   return (
