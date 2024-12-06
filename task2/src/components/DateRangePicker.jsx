@@ -8,6 +8,8 @@ import {
   addMonths,
   subMonths,
   endOfWeek,
+  isSameMonth,
+  isSameDay,
 } from "date-fns";
 import "./DateRangePicker.css";
 
@@ -64,16 +66,24 @@ const DateRangePicker = () => {
         formattedDate = format(day, dateFormat);
         const cloneDay = day;
 
+        const isSelectedStart = startDate && isSameDay(day, startDate);
+        const isSelectedEnd = endDate && isSameDay(day, endDate);
+        const isInRange =
+          startDate && endDate && day > startDate && day < endDate;
+
         days.push(
           <div
-            className={`col cell`}
+            className={`col cell ${isSameDay(day, new Date()) ? "today" : ""} ${
+              isSelectedStart ? "selected" : ""
+            } ${isSelectedEnd ? "selected" : ""} ${
+              isInRange ? "selected" : ""
+            } ${isSameMonth(day, monthStart) ? "" : "light"}`}
             key={format(day, "yyyy-MM-dd")}
             onClick={() => {
               handleDateClick(cloneDay);
             }}
           >
             <span>{formattedDate}日</span>
-            <span></span>
           </div>
         );
         day = addDays(day, 1);

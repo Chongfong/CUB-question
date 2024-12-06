@@ -33,6 +33,19 @@
   cursor: pointer;
 }
 
+.cell.selected {
+  background-color: #006edc;
+  color: white;
+}
+
+.cell:hover {
+  background-color: #e6e6e6;
+}
+
+.today {
+  background-color: #ffff76;
+}
+
 .icon {
   width: 44px;
   height: 44px;
@@ -44,4 +57,8 @@
 
 .icon:hover {
   background-color: #e6e6e6;
+}
+
+.light {
+  color: #757575;
 }
