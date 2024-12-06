@@ -1,0 +1,37 @@
+.container {
+  font-size: 14px;
+}
+
+.container .header {
+  font-size: 18px;
+}
+
+.container .shop-list {
+  list-style: none;
+  margin-left: -15px;
+}
+
+.container .shop-list li.item {
+  color: green;
+}
+
+/* .container .shop-list .item {
+Explain why does this color not works, and how to fix make it work on 1st list
+  color: blue;
+} */
+
+.container ol.shop-list .item {
+  color: blue;
+}
+/* explain: 
+.container .shop-list li.item  has 3 class selectors and 1 element selector 
+.container .shop-list .item    has 3 class selectors
+so .container .shop-list li.item has higher specificity, show the color green
+the new one .container ol.shop-list .item also has 3 class selectors and 1 element selector 
+the one that appears later in the stylesheet takes precedence.
+*/
+
+/* Write styling make every other line give background color to next one */
+.container .shop-list li:nth-child(odd) {
+  background-color: #f0f0f0;
+}
