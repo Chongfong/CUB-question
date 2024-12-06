@@ -12,6 +12,23 @@ import "./DateRangePicker.css";
 const DateRangePicker = () => {
   const [currentMonth] = useState(new Date());
 
+  const renderHeader = () => {
+    const dateFormat = "yyyy年 MM月";
+    return (
+      <div className="header row">
+        <div className="col">
+          <div className="icon">&lsaquo;</div>
+        </div>
+        <div className="col col-center">
+          <span>{format(currentMonth, dateFormat)}</span>
+        </div>
+        <div className="col">
+          <div className="icon">&rsaquo;</div>
+        </div>
+      </div>
+    );
+  };
+
   const renderCells = () => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
@@ -46,7 +63,12 @@ const DateRangePicker = () => {
     return <div>{rows}</div>;
   };
 
-  return <div className="calendar">{renderCells()}</div>;
+  return (
+    <div className="calendar">
+      {renderHeader()}
+      {renderCells()}
+    </div>
+  );
 };
 
 export default DateRangePicker;

@@ -4,6 +4,14 @@
   font-size: 16px;
 }
 
+.header {
+  width: 350px;
+  height: 44px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .row {
   display: flex;
 }
@@ -16,6 +24,20 @@
   align-items: center;
 }
 
+.col-center {
+  width: auto;
+  padding: 16px;
+}
+
 .cell {
   cursor: pointer;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
