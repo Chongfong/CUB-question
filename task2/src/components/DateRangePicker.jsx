@@ -12,7 +12,21 @@ import {
 import "./DateRangePicker.css";
 
 const DateRangePicker = () => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  const handleDateClick = (day) => {
+    if (!startDate || (startDate && endDate)) {
+      setStartDate(day);
+      setEndDate(null);
+    } else if (day >= startDate) {
+      setEndDate(day);
+    } else {
+      setStartDate(day);
+      setEndDate(startDate);
+    }
+  };
 
   const renderHeader = () => {
     const dateFormat = "yyyy年 MM月";
@@ -48,9 +62,16 @@ const DateRangePicker = () => {
     while (day <= endWeek) {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
+        const cloneDay = day;
 
         days.push(
-          <div className={`col cell`} key={format(day, "yyyy-MM-dd")}>
+          <div
+            className={`col cell`}
+            key={format(day, "yyyy-MM-dd")}
+            onClick={() => {
+              handleDateClick(cloneDay);
+            }}
+          >
             <span>{formattedDate}日</span>
             <span></span>
           </div>
