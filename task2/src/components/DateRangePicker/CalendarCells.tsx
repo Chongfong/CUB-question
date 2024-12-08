@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, JSX } from "react";
 import {
   format,
   startOfMonth,
@@ -10,7 +10,18 @@ import {
   isSameMonth,
 } from "date-fns";
 
-const CalendarCells = ({ currentMonth, startDate, endDate, onDateClick }) => {
+interface CalendarCellsProps {
+  currentMonth: Date;
+  startDate: Date | null;
+  endDate: Date | null;
+  onDateClick: (day: Date) => void;
+}
+const CalendarCells = ({
+  currentMonth,
+  startDate,
+  endDate,
+  onDateClick,
+}: CalendarCellsProps) => {
   const rows = useMemo(() => {
     const monthStart = startOfMonth(currentMonth);
     const monthEnd = endOfMonth(monthStart);
@@ -18,8 +29,8 @@ const CalendarCells = ({ currentMonth, startDate, endDate, onDateClick }) => {
     const endWeek = endOfWeek(monthEnd);
     const dateFormat = "d";
 
-    let days = [];
-    let rows = [];
+    let days: JSX.Element[] = [];
+    let rows: JSX.Element[] = [];
     let day = startWeek;
 
     while (day <= endWeek) {
@@ -48,7 +59,7 @@ const CalendarCells = ({ currentMonth, startDate, endDate, onDateClick }) => {
         day = addDays(day, 1);
       }
       rows.push(
-        <div className="row" key={day}>
+        <div className="row" key={format(day, "yyyy-MM-dd")}>
           {days}
         </div>
       );

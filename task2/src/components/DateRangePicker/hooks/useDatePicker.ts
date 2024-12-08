@@ -2,14 +2,14 @@ import { useState } from "react";
 import { addMonths, subMonths } from "date-fns";
 
 export const useDatePicker = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
 
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
   const prevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
 
-  const handleDateClick = (day) => {
+  const handleDateClick = (day: Date) => {
     if (!startDate || (startDate && endDate)) {
       setStartDate(day);
       setEndDate(null);
@@ -21,5 +21,12 @@ export const useDatePicker = () => {
     }
   };
 
-  return { currentMonth, nextMonth, prevMonth, startDate, endDate, handleDateClick };
+  return {
+    currentMonth,
+    nextMonth,
+    prevMonth,
+    startDate,
+    endDate,
+    handleDateClick,
+  };
 };

@@ -1,7 +1,16 @@
 import React from "react";
 import { format } from "date-fns";
 
-const CalendarHeader = ({ currentMonth, onPrevMonth, onNextMonth }) => {
+interface CalendarHeaderProps {
+  currentMonth: Date;
+  onPrevMonth: () => void;
+  onNextMonth: () => void;
+}
+const CalendarHeader = ({
+  currentMonth,
+  onPrevMonth,
+  onNextMonth,
+}: CalendarHeaderProps) => {
   const dateFormat = "yyyy年 M月";
 
   return (
