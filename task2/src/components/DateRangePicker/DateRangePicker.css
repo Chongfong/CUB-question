@@ -1,0 +1,64 @@
+.calendar {
+  width: 350px;
+  height: 240px;
+  font-size: 16px;
+}
+
+.header {
+  width: 350px;
+  height: 44px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  width: 50px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-center {
+  width: auto;
+  padding: 16px;
+}
+
+.cell {
+  cursor: pointer;
+}
+
+.cell.selected {
+  background-color: #006edc;
+  color: white;
+}
+
+.cell:hover {
+  background-color: #e6e6e6;
+}
+
+.today {
+  background-color: #ffff76;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon:hover {
+  background-color: #e6e6e6;
+}
+
+.light {
+  color: #757575;
+}
