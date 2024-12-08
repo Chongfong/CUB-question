@@ -1,8 +1,8 @@
 import React from "react";
-import CalendarHeader from "./CalendarHeader";
-import CalendarCells from "./CalendarCells";
+import CalendarHeader from "./CalendarHeader.tsx";
+import CalendarCells from "./CalendarCells.tsx";
 import "./DateRangePicker.css";
-import { useDatePicker } from "./hooks/useDatePicker";
+import { useDatePicker } from "./hooks/useDatePicker.ts";
 
 const DateRangePicker = () => {
   const {
